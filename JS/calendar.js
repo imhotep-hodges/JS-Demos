@@ -25,7 +25,7 @@ function getDatesBetween(date1 , date2) {
          date1.setMonth(date1.getMonth() + 1);
       }
    }
-   
+   console.log(dates);
    let content = "";
    let weekDays = [{shortDay: "Mon", fullDay: "Monday"}, 
    {shortDay: "Tue", fullDay: "Tuesday"}, 
@@ -36,55 +36,25 @@ function getDatesBetween(date1 , date2) {
    {shortDay: "Sun", fullDay: "Sunday"}
 ];
 let lastDate, firstDate;
-for (let i = 0; i < dates.length; i++) {
-   lastDate = dates [i];
-   firstDate = new Date(dates [i].getFullYear(), dates[i].getMonth(), 1); 
-   content += "<div id='calendarTable_" + (i + 1) + "'>";
-   content += "<h2>" + 
-   firstDate.toString().split(" ")[1] + 
-   "-" + 
-   firstDate.getFullYear() + 
-   "</h2>";
-   content += "<table >";
-   content += "<thead >";
-   weekDays.map(item => {
-      content += "<th>" + item.fullDay + "</th>";
-   })
-   content += "</thead>";
-   content += "<tbody >";
-   let j = 1;
-   let displayNum, idMonth;
-   while (j <= lastDate.getDate()) {
-      content += "<tr>";
-         for (let k = 0; k < 7; k++) {
-            displayNum = j < 10 ? "0" + j : j;
-            if (j == 1) {
-               if (firstDate.toString().split(" ")[0] == weekDays[k].shortDay) {
-                  content += "<td>" + displayNum + "</td>";
-                  j++;
-               }
-               else {
-                  content += "<td></td>";
-               }
-            } else if (j > lastDate.getDate()) {
-               content += "<td></td>";
-            } else {
-               content += "<td>" + displayNum + "</td>";
-                  j++;
-               }
-            }
-         }
-      content += "</tr>";
-
+   for (let i = 0; i < dates.length; i++) {
+      lastDate = dates [i];
+      firstDate = new Date(dates [i].getFullYear(), dates[i].getMonth(), 1); 
+      content += "<div id='calendarTable_"+ (i+1)+"'>";
+      content += "<h2>"+firstDate.toString().split(" ")[1]+"-"+firstDate.getFullYear()+"</h2>";
+      
+      content += "<table>";
+      content += "<thead>";
+      weekDays.map(item => {
+         content += "<th>"+item.fullDay+"</th>";
+      })
+      content += "</thead>";
+      content += "</table>";
+      content += "</div>";
    }
-   content += "</tbody>";
-   content += "</table>";
-   content += "</div>";
-}
-return content;
-
+   return content;
 }
 
-let content = getDatesBetween("2021/01/31" , "2022/01/31");
+let content = getDatesBetween("2021/02/01" , "2022/02/01");
 document.getElementById("calendar").innerHTML = content; 
+
 
