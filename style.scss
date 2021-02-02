@@ -1,0 +1,33 @@
+#calendar {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 60px;
+}
+.calendarTable {
+    width: 100%;
+    border: 1px solid white;
+
+}
+
+th {
+    background-color: black;
+    border: 1px solid white;
+    padding: 20px 0px;
+    color: white;
+}
+
+td {
+    text-align: center;
+    padding: 20px 0;
+    border: 1px solid white;
+    cursor:pointer;
+    background-color: gray;
+}
+
+.calendarDiv {
+    display: none;
+}
+
+#calendarTable {
+    display: block;
+}
